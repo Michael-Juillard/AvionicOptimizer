@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+    <name>test</name>
+    <satellite>CS1</satellite>
+    
+    <architecture>
+        <name>test</name>
+        <memories nb="2"> 
+            <memory id="1">
+                <maxDataRate unit="Mb/s">200</maxDataRate>
+                <maxStorage>1000</maxStorage>
+            </memory>
+            <memory id="2">
+                <maxDataRate unit="Mb/s">200</maxDataRate>
+                <maxStorage>1000</maxStorage>
+            </memory>
+        </memories>
+        <sensors nb="2" >
+            <sensor id="1" memLink="1">
+                <name>Camera</name>
+                <modes nbMode="4" modeStart="1" >
+                    <mode id="1">
+                        <name>OFF</name>
+                        <power unit="W">0</power>
+                        <dataRate unit="Mb/s">0</dataRate>
+                    </mode>
+                    <mode id="2">
+                        <name>Idle</name>
+                        <power unit="W">5</power>
+                        <dataRate unit="Mb/s">2</dataRate>
+                    </mode>
+                    <mode id="3">
+                        <name>Medium</name>
+                        <power unit="W">30</power>
+                        <dataRate unit="Mb/s">110</dataRate>
+                    </mode>
+                    <mode id="4">
+                        <name>Fast</name>
+                        <power unit="W">40</power>
+                        <dataRate unit="Mb/s">160</dataRate>
+                    </mode>
+                </modes>
+            </sensor>
+            <sensor id="2" memLink="2">
+                <name>Camera 2</name>
+                <modes nbMode="4" modeStart="1" >
+                    <mode id="1">
+                        <name>OFF</name>
+                        <power unit="W">0</power>
+                        <dataRate unit="Mb/s">0</dataRate>
+                    </mode>
+                    <mode id="2">
+                        <name>Idle</name>
+                        <power unit="W">5</power>
+                        <dataRate unit="Mb/s">2</dataRate>
+                    </mode>
+                    <mode id="3">
+                        <name>Medium</name>
+                        <power unit="W">40</power>
+                        <dataRate unit="Mb/s">120</dataRate>
+                    </mode>
+                    <mode id="4">
+                        <name>Fast</name>
+                        <power unit="W">45</power>
+                        <dataRate unit="Mb/s">140</dataRate>
+                    </mode>
+                </modes>
+            </sensor>
+        </sensors>
+        
+        <typeDataOut nb="2">
+            <type id="1">
+                <name>position</name>
+                <alpha>0.002</alpha>
+            </type>
+            <type id="2">
+                <name>velocity</name>
+                <alpha>0.002</alpha>
+            </type>
+        </typeDataOut>
+
+        <algos nb="2">
+            <algo id="1" memLink="1" typeData="1">
+                <name>Track</name>
+                <modes nbMode="4" modeStart="2" >
+                    <mode id="1">
+                        <name>OFF</name>
+                        <period unit="steps">1</period>
+                        <accuracy unit="">0</accuracy>
+                        <procRess unit="MIPS">0</procRess>
+                        <procDataRate unit="Mb/s">0</procDataRate>
+                    </mode>
+                    <mode id="2"> 
+                        <name>Idle</name>
+                        <period unit="steps">20</period>
+                        <accuracy unit="">0.01</accuracy>
+                        <procRess unit="MIPS">20</procRess>
+                        <procDataRate unit="Mb/s">10</procDataRate>
+                    </mode>
+                    <mode id="3">
+                        <name>Medium</name>
+                        <period unit="steps">10</period>
+                        <accuracy unit="">0.1</accuracy>
+                        <procRess unit="MIPS">200</procRess>
+                        <procDataRate unit="Mb/s">45</procDataRate>
+                    </mode>
+                    <mode id="4">
+                        <name>Fast</name>
+                        <period unit="steps">6</period>
+                        <accuracy unit="">0.14</accuracy>
+                        <procRess unit="MIPS">400</procRess>
+                        <procDataRate unit="Mb/s">60</procDataRate>
+                    </mode>
+                </modes>
+            </algo>
+            
+            <algo id="2" memLink="2" typeData="2">
+                <name>Analyse</name>
+                <modes nbMode="4" modeStart="2" >
+                    <mode id="1">
+                        <name>OFF</name>
+                        <period unit="steps">1</period>
+                        <accuracy unit="">0</accuracy>
+                        <procRess unit="MIPS">0</procRess>
+                        <procDataRate unit="Mb/s">0</procDataRate>
+                    </mode>
+                    <mode id="2">
+                        <name>Idle</name>
+                        <period unit="steps">20</period>
+                        <accuracy unit="">0.01</accuracy>
+                        <procRess unit="MIPS">20</procRess>
+                        <procDataRate unit="Mb/s">10</procDataRate>
+                    </mode>
+                    <mode id="3">
+                        <name>Medium</name>
+                        <period unit="steps">14</period>
+                        <accuracy unit="">0.12</accuracy>
+                        <procRess unit="MIPS">250</procRess>
+                        <procDataRate unit="Mb/s">50</procDataRate>
+                    </mode>
+                    <mode id="4">
+                        <name>Fast</name>
+                        <period unit="steps">8</period>
+                        <accuracy unit="">0.16</accuracy>
+                        <procRess unit="MIPS">450</procRess>
+                        <procDataRate unit="Mb/s">65</procDataRate>
+                    </mode>
+                </modes>
+            </algo>
+            
+        </algos>
+
+        <obc>
+            <modes nbMode="3" modeStart="2" >
+                <mode id="1">
+                    <name>Idle</name>
+                    <power unit="W">20</power>
+                    <procRess unit="MIPS">50</procRess>
+                </mode>
+                <mode id="2">
+                    <name>Fast</name>
+                    <power unit="W">120</power>
+                    <procRess unit="MIPS">900</procRess>
+                </mode>
+                <mode id="3">
+                    <name>Medium</name>
+                    <power unit="W">90</power>
+                    <procRess unit="MIPS">500</procRess>
+                </mode>
+            </modes>
+        </obc>
+    </architecture>
+    
+    <powerGeneration>
+        <type>sinus</type>
+        <offset unit="W">180</offset>
+        <amplitude unit="W">80</amplitude>
+        <period unit="steps">40</period>
+    </powerGeneration>
+
+    <simulationParameters>
+        <startTime unit="s">0</startTime>
+        <endTime unit="s">2.0</endTime>
+        <step unit="">80</step>
+    </simulationParameters>
+    
+    <initalConditionState> <!-- to update -->
+        <infoTarget name="c">
+            <dataType id="1">0.5</dataType>
+            <dataType id="2">0.5</dataType>
+        </infoTarget>
+        <!-- Not used
+        <avgFrequency name="f">0</avgFrequency>
+        <power name="p">500</power>
+        <procRess name="r">500</procRess>
+        <dataRate name="d">
+            <memory id="1">100</memory>
+            <memory id="2">100</memory>
+        </dataRate>
+        -->
+        <storageCap name="s">
+            <memory id="1">0</memory> <!-- empty -->
+            <memory id="2">0</memory> <!-- empty -->
+        </storageCap>
+    </initalConditionState>
+    
+    
+    <objectiveFunctionWeights>
+        <weight id="1" name="beta"> <!-- Accuracy -->
+            <value id="1">1</value>
+            <value id="2">1</value>
+        </weight>
+        <weight id="2" name="gamma"> <!-- Memory -->
+            <value id="1">0.1</value>
+            <value id="2">0.1</value>
+        </weight>
+        <!--
+        <weight id="3" name="lambda">
+            <value id="1">0.05</value>
+        </weight>
+        -->
+    </objectiveFunctionWeights>
+    
+
+</param>
+    
