@@ -21,8 +21,8 @@ The "results" folder will store the results of the optimizer.
 
 ## 3 - Research linked
 Complement information the tool can be found here
-- "Simulation Tool: Resources Management in High Performance Avionic for ADR Missions" by Michaël Juillard & Jean-Paul Kneib (2021 IEEE Aerospace Conference) [PDF] (https://www.researchgate.net/publication/352234234_Simulation_Tool_Resources_Management_in_High_Performance_Avionic_for_ADR_Missions)
-- "Optimal Control Approach for Dedicated On-Board Computer in Active Debris Removal Mission" by Michaël Juillard & Jean-Paul Kneib (35th Proceedings of the AIAA/USU Conference on Small Satellites) [PDF}(https://www.researchgate.net/publication/354784632_Optimal_Control_Approach_for_Dedicated_On-Board_Computer_in_Active_Debris_Removal_Mission)
+- "Simulation Tool: Resources Management in High Performance Avionic for ADR Missions" by Michaël Juillard & Jean-Paul Kneib (2021 IEEE Aerospace Conference) [PDF](https://www.researchgate.net/publication/352234234_Simulation_Tool_Resources_Management_in_High_Performance_Avionic_for_ADR_Missions)
+- "Optimal Control Approach for Dedicated On-Board Computer in Active Debris Removal Mission" by Michaël Juillard & Jean-Paul Kneib (35th Proceedings of the AIAA/USU Conference on Small Satellites) [PDF](https://www.researchgate.net/publication/354784632_Optimal_Control_Approach_for_Dedicated_On-Board_Computer_in_Active_Debris_Removal_Mission)
 
 
 ## 4 - Credits
