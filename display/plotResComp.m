@@ -8,7 +8,7 @@ plotHeight = 800;
 
 
 %Select folder
-selpath = uigetdir('res/');
+selpath = uigetdir('../results/');
 nameFiles = dir([selpath '/' '*_output.mat']);
 
 markerList = ['+','x','o','*','s','d','h'];
@@ -261,10 +261,4 @@ ylim([0;maxDataRate*1.1]);
 grid on
 legend(legendTxtDR,'Location','best')
 hold off
-
-
-    
-
-
-
 
