@@ -5,7 +5,7 @@ The goal of this optimizer is to find the best avionic architecture for a satell
 
 ## 2 - How to Use
 
-This tool requires [Matlab](https://ch.mathworks.com/products/matlab.html) to run. In addition, it needs the [Gurobi Matlab libarary](https://www.gurobi.com/) that can be obtained for free with an academic license. The link to the library should be updated in the first line of the main.m file.
+This tool requires [Matlab](https://ch.mathworks.com/products/matlab.html) to run. In addition, it needs the [Gurobi Matlab libarary ](https://www.gurobi.com/)  (version 9.1.1) that can be obtained for free with an academic license. The link to the library should be updated in the first line of the main.m file.
 
 The "main.m" file contains the implementation of the MIQCQP into the library. It is also the one running the whole optimization. The "loadParamXML.m" load the various parameter of the architecture from the XML file stored in the "parameter" folder.
 
