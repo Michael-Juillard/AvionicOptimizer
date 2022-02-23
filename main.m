@@ -12,11 +12,12 @@ clc;
 set(groot, 'defaultAxesTickLabelInterpreter','latex');
 set(groot, 'defaultLegendInterpreter','latex');
 
-addpath('/home/espacemj/Documents/MATLAB/Gurobi/gurobi9.1.1_linux64/gurobi911/linux64/matlab')
+% PATH TO GUROBI TO EDIT 
+addpath('###/Gurobi/gurobi9.1.1_linux64/gurobi911/linux64/matlab')
 
 
 %% parameters
-PAR = loadParamXML("param/param_mem_empty_v2.xml");
+PAR = loadParamXML("parameter/param_mem_empty_v2.xml");
 %% Simulation
 t0   =  PAR.sim.startTime.value;  % initial time
 tf   =  PAR.sim.endTime.value; % end time
@@ -745,7 +746,7 @@ result = gurobi(model, bestparams);
 
 %% Analyse result
 disp(result);
-plotData=0;
+
 if strcmp(result.status, 'OPTIMAL')
 
     fprintf('The optimal objective is %g\n', result.objval);
@@ -754,7 +755,7 @@ if strcmp(result.status, 'OPTIMAL')
 %         fprintf('%s %d\n', model.varnames{v}, result.x(v));
 %     end
     %save result  !!!!
-    nameFile = ['res/' model.modelname '_output.mat']; 
+    nameFile = ['results/' model.modelname '_output.mat']; 
     save(nameFile, 'result', 'PAR');
     
     plotData=1;
@@ -762,10 +763,10 @@ if strcmp(result.status, 'OPTIMAL')
 elseif strcmp(result.status, 'TIME_LIMIT')
     fprintf('TIME LIMIT SOL : The optimal objective is %g\n', result.objval);
 
-    nameFile = ['res/' model.modelname '_TM_output.mat']; 
+    nameFile = ['results/' model.modelname '_TM_output.mat']; 
     save(nameFile, 'result', 'PAR');
     
-    plotData=1;
+
 else
     
     if strcmp(result.status, 'INFEASIBLE')
@@ -781,7 +782,7 @@ else
         if str=='Y' % need to save IIS !
             iis = gurobi_iis(model, params);
             
-            nameFile = ['res/IIS_' model.modelname '.mat']; 
+            nameFile = ['results/IIS_' model.modelname '.mat']; 
             save(nameFile, 'iis', 'PAR');
 
             if iis.minimal
@@ -808,131 +809,4 @@ else
         fprintf('Unexpected status %s\n',result.status);
     end
 end
-
-%% Plot
-if plotData==1
-    close all
-    
-    figure
-    hold on
-    idData =1;
-    for i =1:PAR.arch.algos.nb
-        
-        nbMode = PAR.arch.algos.nbMode(i);
-        mode = reshape(result.x(idData:idData+N*nbMode-1),[nbMode,N])'*[1:nbMode]';
-        idData = idData + N*nbMode;
-        plot(mode)
-    end
-    
-    for i =1:PAR.arch.sensors.nb
-        
-        nbMode = PAR.arch.sensors.nbMode(i);
-        mode = reshape(result.x(idData:idData +N*nbMode-1),[nbMode,N])'*[1:nbMode]';
-        idData = idData + N*nbMode;
-        plot(mode)
-    end
-    
-    nbMode = PAR.arch.OBC.nbMode;
-    mode = reshape(result.x(idData:idData +N*nbMode-1),[nbMode,N])'*[1:nbMode]';
-    idData = idData + N*nbMode;
-    plot(mode)
-    title("Mode")
-    legend
-    hold off
-    
-    figure 
-    hold on
-    for i =1:PAR.arch.typeDataOut.nb
-        mode = reshape(result.x(idData:idData+N-1),[1,N]);
-        idData = idData + N;
-        plot(mode)
-    end
-    title("Accuracy")
-    legend
-    hold off
-    
-    plotDebugGraph =1;
-    if plotDebugGraph==1
-    
-        figure 
-        hold on
-        for i =1:PAR.arch.algos.nb
-            mode = reshape(result.x(idData:idData+N-1),[1,N]);
-            idData = idData + N;
-            plot(mode)
-        end
-        title("Inc")
-        legend
-        hold off
-        
-        figure 
-        hold on
-        for i =1:PAR.arch.algos.nb
-            mode = reshape(result.x(idData:idData+N-1),[1,N]);
-            idData = idData + N;
-            plot(mode)
-        end
-        title("LastUp")
-        legend
-        hold off
-        
-        figure 
-        hold on
-        for i =1:PAR.arch.algos.nb
-            mode = reshape(result.x(idData:idData+N-1),[1,N]);
-            idData = idData + N;
-            plot(mode)
-        end
-        title("Algo up")
-        legend
-        hold off
-        
-        figure 
-        hold on
-        for i =1:PAR.arch.memories.nb
-            mode = reshape(result.x(idData:idData+N-1),[1,N]);
-            idData = idData + N;
-            plot(mode)
-        end
-        title("Mem usage")
-        legend
-        hold off
-        
-        figure 
-        hold on
-        for i =1:PAR.arch.typeDataOut.nb
-            mode = reshape(result.x(idData:idData+N-1),[1,N]);
-            idData = idData + N;
-            plot(mode)
-        end
-        title("Acc >= 0")
-        legend
-        hold off
-    
-        figure 
-        hold on
-        for i =1:PAR.arch.algos.nb
-            mode = reshape(result.x(idData:idData+N-1),[1,N]);
-            idData = idData + N;
-            plot(mode)
-        end
-        title("ctrl algo up 1")
-        legend
-        hold off
-        
-        figure 
-        hold on
-        for i =1:PAR.arch.algos.nb
-            mode = reshape(result.x(idData:idData+N-1),[1,N]);
-            idData = idData + N;
-            plot(mode)
-        end
-        title("ctrl algo up 2")
-        legend
-        hold off
-        
-    end
-    
-end
-
 
